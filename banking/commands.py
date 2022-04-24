@@ -9,8 +9,6 @@ from banking.transaction import Transaction
 class Deposit(Transaction):
     account: Account
     amount: int
-    currency: str = "USD"
-    currency_symbol: str = "$"
 
     @property
     def transaction_details(self) -> str:
@@ -33,8 +31,6 @@ class Deposit(Transaction):
 class Withdrawal(Transaction):
     account: Account
     amount: int
-    currency: str = "USD"
-    currency_symbol: str = "$"
 
     @property
     def transaction_details(self) -> str:

@@ -5,6 +5,8 @@ class Transaction(ABC):
     """
     Abstract transaction class
     """
+    currency: str = "USD"
+    currency_symbol: str = "$"
 
     def execute(self) -> None:
         raise NotImplementedError()
