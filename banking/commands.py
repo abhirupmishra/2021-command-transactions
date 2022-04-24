@@ -6,13 +6,15 @@ from banking.transaction import Transaction
 
 
 @dataclass
-class Deposit:
+class Deposit(Transaction):
     account: Account
     amount: int
+    currency: str = "USD"
+    currency_symbol: str = "$"
 
     @property
     def transfer_details(self) -> str:
-        return f"${self.amount/100:.2f} to account {self.account.name}"
+        return f"{self.currency_symbol}{self.amount/100:.2f} to account {self.account.name}"
 
     def execute(self) -> None:
         self.account.deposit(self.amount)
@@ -28,9 +30,11 @@ class Deposit:
 
 
 @dataclass
-class Withdrawal:
+class Withdrawal(Transaction):
     account: Account
     amount: int
+    currency: str = "USD"
+    currency_symbol: str = "$"
 
     @property
     def transfer_details(self) -> str:
@@ -50,7 +54,7 @@ class Withdrawal:
 
 
 @dataclass
-class Transfer:
+class Transfer(Transaction):
     from_account: Account
     to_account: Account
     amount: int
@@ -80,6 +84,10 @@ class Transfer:
 
 @dataclass
 class Batch:
+    """
+    Batch for a group of transactions
+    """
+
     commands: List[Transaction] = field(default_factory=list)
 
     def execute(self) -> None:
