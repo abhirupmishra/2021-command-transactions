@@ -38,7 +38,7 @@ class Withdrawal(Transaction):
 
     @property
     def transaction_details(self) -> str:
-        return f"${self.amount/100:.2f} from account {self.account.name}"
+        return f"{self.currency_symbol}{self.amount/100:.2f} from account {self.account.name}"
 
     def execute(self) -> None:
         self.account.withdraw(self.amount)
@@ -87,6 +87,7 @@ class Batch:
     """
     Batch for a group of transactions
     """
+
     commands: List[Transaction] = field(default_factory=list)
 
     def execute(self) -> None:
