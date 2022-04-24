@@ -13,20 +13,20 @@ class Deposit(Transaction):
     currency_symbol: str = "$"
 
     @property
-    def transfer_details(self) -> str:
+    def transaction_details(self) -> str:
         return f"{self.currency_symbol}{self.amount/100:.2f} to account {self.account.name}"
 
     def execute(self) -> None:
         self.account.deposit(self.amount)
-        print(f"Deposited {self.transfer_details}")
+        print(f"Deposited {self.transaction_details}")
 
     def undo(self) -> None:
         self.account.withdraw(self.amount)
-        print(f"Undid deposit of {self.transfer_details}")
+        print(f"Undid deposit of {self.transaction_details}")
 
     def redo(self) -> None:
         self.account.deposit(self.amount)
-        print(f"Redid deposit of {self.transfer_details}")
+        print(f"Redid deposit of {self.transaction_details}")
 
 
 @dataclass
@@ -37,20 +37,20 @@ class Withdrawal(Transaction):
     currency_symbol: str = "$"
 
     @property
-    def transfer_details(self) -> str:
+    def transaction_details(self) -> str:
         return f"${self.amount/100:.2f} from account {self.account.name}"
 
     def execute(self) -> None:
         self.account.withdraw(self.amount)
-        print(f"Withdrawn {self.transfer_details}")
+        print(f"Withdrawn {self.transaction_details}")
 
     def undo(self) -> None:
         self.account.deposit(self.amount)
-        print(f"Undid withdrawal of {self.transfer_details}")
+        print(f"Undid withdrawal of {self.transaction_details}")
 
     def redo(self) -> None:
         self.account.withdraw(self.amount)
-        print(f"Redid withdrawal of {self.transfer_details}")
+        print(f"Redid withdrawal of {self.transaction_details}")
 
 
 @dataclass
@@ -87,7 +87,6 @@ class Batch:
     """
     Batch for a group of transactions
     """
-
     commands: List[Transaction] = field(default_factory=list)
 
     def execute(self) -> None:

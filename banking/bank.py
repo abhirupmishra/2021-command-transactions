@@ -29,7 +29,7 @@ class Bank:
         get account
 
         Args:
-            account_number (str): account number for 
+            account_number (str): account number for
                 which the details are required
 
         Returns:

@@ -12,6 +12,7 @@ class Account:
     """
     Account
     """
+
     name: str
     number: str
     balance: int = 0
@@ -24,7 +25,7 @@ class Account:
             amount (int): amount that needs to be deposited
         """
         self.balance += amount
-    
+
     def withdraw(self, amount: int) -> None:
         if amount > self.balance:
             raise InsufficientBalance()
