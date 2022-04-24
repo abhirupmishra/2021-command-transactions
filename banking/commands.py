@@ -92,7 +92,7 @@ class Batch:
             for command in self.commands:
                 command.execute()
                 completed_commands.append(command)
-        except ValueError:
+        except InsufficientBalance:
             for command in reversed(completed_commands):
                 command.undo()
             raise
