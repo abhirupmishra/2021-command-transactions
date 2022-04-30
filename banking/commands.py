@@ -3,6 +3,7 @@ from typing import List
 
 from banking.account import Account
 from banking.transaction import Transaction
+from errors import InsufficientBalance
 
 
 @dataclass
