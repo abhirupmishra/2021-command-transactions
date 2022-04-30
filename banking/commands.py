@@ -1,3 +1,6 @@
+"""
+Transaction Commands
+"""
 from dataclasses import dataclass, field
 from typing import List
 
@@ -8,6 +11,10 @@ from errors import InsufficientBalance
 
 @dataclass
 class Deposit(Transaction):
+    """
+    deposit transaction
+    """
+    # pylint: disable=missing-function-docstring
     account: Account
     amount: int
 
@@ -30,6 +37,10 @@ class Deposit(Transaction):
 
 @dataclass
 class Withdrawal(Transaction):
+    """
+    Withdrawal transaction
+    """
+    # pylint: disable=missing-function-docstring
     account: Account
     amount: int
 
@@ -52,6 +63,10 @@ class Withdrawal(Transaction):
 
 @dataclass
 class Transfer(Transaction):
+    """
+    Transfer transaction
+    """
+    # pylint: disable=missing-function-docstring
     from_account: Account
     to_account: Account
     amount: int
@@ -84,7 +99,7 @@ class Batch:
     """
     Batch for a group of transactions
     """
-
+    # pylint: disable=missing-function-docstring
     commands: List[Transaction] = field(default_factory=list)
 
     def execute(self) -> None:

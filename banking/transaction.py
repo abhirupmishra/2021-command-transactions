@@ -1,3 +1,7 @@
+"""
+Transaction
+"""
+# pylint: disable=missing-function-docstring
 from abc import ABC
 
 

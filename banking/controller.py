@@ -1,3 +1,8 @@
+"""
+Bank Controller Module
+"""
+# pylint: disable=missing-function-docstring
+
 from dataclasses import dataclass, field
 from typing import List
 
@@ -5,7 +10,10 @@ from banking.transaction import Transaction
 
 
 @dataclass
-class BankController(Transaction):
+class BankController:
+    """
+    Controller to manage the set of transactions
+    """
     undo_stack: List[Transaction] = field(default_factory=list)
     redo_stack: List[Transaction] = field(default_factory=list)
 

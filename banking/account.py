@@ -12,7 +12,7 @@ class Account:
     """
     Account
     """
-
+    # pylint: disable=missing-function-docstring
     name: str
     number: str
     balance: int = 0

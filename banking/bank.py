@@ -1,3 +1,6 @@
+"""
+Bank Module
+"""
 import random
 import string
 from dataclasses import dataclass, field
@@ -8,6 +11,10 @@ from banking.account import Account
 
 @dataclass
 class Bank:
+    """
+    Bank class
+    """
+    # pylint: disable=missing-function-docstring
     accounts: Dict[str, Account] = field(default_factory=dict)
 
     def create_account(self, name: str) -> Account:
