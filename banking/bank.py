@@ -11,7 +11,8 @@ class Bank:
     accounts: Dict[str, Account] = field(default_factory=dict)
 
     def create_account(self, name: str) -> Account:
-        """create a new account
+        """
+        Create a new account
 
         Args:
             name (str): account name
